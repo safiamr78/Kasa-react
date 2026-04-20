@@ -1,15 +1,24 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import logements from "../data/logements";
 import NotFound from "./NotFound";
 import "./PropertyDetail.css";
 
 function PropertyDetail() {
-  const { id } = useParams();
-  const logement = logements.find((item) => item.id === id);
+const { id } = useParams();
+const [logement, setLogement] = useState(null);
+const [loading, setLoading] = useState(true);
 
-  if (!logement) {
-    return <NotFound />;
-  }
+useEffect(() => {
+fetch(`http://localhost:8080/api/properties/${id}`)
+.then((response) => response.json())
+.then((data) => {
+setLogement(data);
+setLoading(false);
+});
+}, [id]);
+
+if (loading) return <p>Chargement...</p>;
+if (!logement) return <NotFound />;
 
   return (
     <article className="property">

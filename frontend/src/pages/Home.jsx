@@ -1,29 +1,30 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logements from "../data/logements";
+import Banner from "../components/Banner/Banner";
+import Card from "../components/Card/Card";
 import "./Home.css";
 
 function Home() {
-  return (
-    <section className="home">
-      <div className="home__banner">
-        <p className="home__banner-text">Chez vous, partout et ailleurs</p>
-      </div>
+const [logements, setLogements] = useState([]);
 
-      <div className="home__grid">
-        {logements.map((logement) => (
-          <Link
-            key={logement.id}
-            to={`/logement/${logement.id}`}
-            className="home__card"
-          >
-            <div className="home__card-overlay">
-              <p className="home__card-title">{logement.title}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
+useEffect(() => {
+fetch("http://localhost:8080/api/properties")
+.then((response) => response.json())
+.then((data) => setLogements(data));
+}, []);
+
+return (
+<section className="home">
+<Banner />
+<div className="home__grid">
+{logements.map((logement) => (
+<Link key={logement.id} to={`/logement/${logement.id}`}>
+<Card title={logement.title} cover={logement.cover} />
+</Link>
+))}
+</div>
+</section>
+);
 }
 
 export default Home;

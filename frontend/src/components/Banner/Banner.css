@@ -1,0 +1,21 @@
+.banner {
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/source1.jpg');
+background-size: cover;
+background-position: center;
+border-radius: 25px;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 223px;
+}
+
+.banner__text {
+color: white;
+font-size: 48px;
+font-weight: 700;
+font-family: 'Montserrat' , sans-serif;
+text-shadow: -1px -1px 0 #000,
+1px -1px 0 #000,
+-1px 1px 0 #000,
+1px 1px 0 #000;
+}
