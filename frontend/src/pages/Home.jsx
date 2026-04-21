@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Banner from "../components/Banner/Banner";
 import Card from "../components/Card/Card";
 import "./Home.css";
+import bannerHome from '../assets/source1.jpg';
 
 function Home() {
 const [logements, setLogements] = useState([]);
@@ -15,7 +16,7 @@ fetch("http://localhost:8080/api/properties")
 
 return (
 <section className="home">
-<Banner />
+<Banner text="Chez vous, partout et ailleurs" image={bannerHome} opacity={0.6} />
 <div className="home__grid">
 {logements.map((logement) => (
 <Link key={logement.id} to={`/logement/${logement.id}`}>

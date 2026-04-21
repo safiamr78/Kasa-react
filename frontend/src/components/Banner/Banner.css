@@ -1,6 +1,5 @@
 .banner {
-background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/source1.jpg');
-background-size: cover;
+background-size: 100%;
 background-position: center;
 border-radius: 25px;
 display: flex;

@@ -3,6 +3,7 @@ import Layout from "../components/Layout/Layout";
 import Home from "../pages/Home";
 import PropertyDetail from "../pages/PropertyDetail";
 import NotFound from "../pages/NotFound";
+import About from "../pages/About";
 
 function AppRouter() {
   return (
@@ -11,6 +12,7 @@ function AppRouter() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/logement/:id" element={<PropertyDetail />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

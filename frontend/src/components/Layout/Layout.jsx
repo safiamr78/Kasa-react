@@ -13,7 +13,7 @@ function Layout({ children }) {
           <Link to="/" className="layout__nav-link">
             Accueil
           </Link>
-          <Link to="/a-propos" className="layout__nav-link">
+          <Link to="/about" className="layout__nav-link">
             A propos
           </Link>
         </nav>
