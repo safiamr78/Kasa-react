@@ -16,7 +16,7 @@ fetch("http://localhost:8080/api/properties")
 
 return (
 <section className="home">
-<Banner text="Chez vous, partout et ailleurs" image={bannerHome} opacity={0.6} />
+<Banner text={<>Chez vous, <br className="mobile-break"/> partout et ailleurs</>} image={bannerHome} opacity={0.6} />
 <div className="home__grid">
 {logements.map((logement) => (
 <Link key={logement.id} to={`/logement/${logement.id}`}>

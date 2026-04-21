@@ -30,3 +30,26 @@ text-decoration: underline;
 margin-top: 50px;
 margin-bottom: 50px;
 }
+
+@media (max-width: 768px) {
+  
+  .not-found {
+    align-items: center;
+  }
+
+  .not-found__code {
+    font-size: 96px;
+  }
+
+  .not-found__message {
+    font-size: 18px;
+    max-width: 260px;
+    text-align: center;
+  }
+
+    .not-found__link {
+      color:#000;
+      font-weight: 500;
+      margin-top: 75px;
+    }
+}

@@ -18,3 +18,26 @@ text-shadow: -1px -1px 0 #000,
 -1px 1px 0 #000,
 1px 1px 0 #000;
 }
+
+.mobile-break {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .banner {
+        border-radius: 10px;
+        background-size: cover;
+        height: 111px;
+        justify-content: flex-start;
+    }
+
+    .banner__text {
+        font-size: 24px;
+        padding-left: 15px;
+    }
+    
+    .mobile-break {
+        display: block;
+    }
+}
