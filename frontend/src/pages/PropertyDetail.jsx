@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import "./PropertyDetail.css";
+import Slideshow from "../components/Slideshow/Slideshow";
+import Collapse from "../components/Collapse/Collapse";
 
 function PropertyDetail() {
 const { id } = useParams();
@@ -22,7 +24,7 @@ if (!logement) return <NotFound />;
 
   return (
     <article className="property">
-      <div className="property__image-placeholder" aria-label="Image du logement" />
+      <Slideshow images={logement.pictures} />
 
       <div className="property__header">
         <div className="property__info">
@@ -42,28 +44,25 @@ if (!logement) return <NotFound />;
             <span className="property__host-name">{logement.host.name}</span>
             <div className="property__host-avatar" aria-label="Avatar hôte" />
           </div>
-          <div
-            className="property__rating"
-            aria-label={`Note : ${logement.rating} sur 5`}
-          >
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                className={`property__star${
-                  star <= Number(logement.rating) ? " property__star--filled" : ""
-                }`}
-              >
-                ★
-              </span>
-            ))}
-          </div>
+          
+            <div className="property__rating" aria-label={`Note : ${logement.rating} sur 5`}>
+{[1, 2, 3, 4, 5].map((star) => (
+<img
+key={star}
+src={star <= Number(logement.rating) ? "/src/assets/étoile.svg" : "/src/assets/étoile-vide.svg"}
+alt=""
+width="32"
+height="32"
+/>
+))}
+</div>
         </div>
       </div>
 
-      <div className="property__description">
-        <h2 className="property__section-title">Description</h2>
-        <p className="property__text">{logement.description}</p>
-      </div>
+      <div className="property__collapses">
+<Collapse title="Description" content={logement.description} />
+<Collapse title="Équipements" content={Array.isArray(logement.equipments) ? logement.equipments.map((item, i) => <span key={i}>{item}</span>) : logement.equipments} />
+    </div>
     </article>
   );
 }

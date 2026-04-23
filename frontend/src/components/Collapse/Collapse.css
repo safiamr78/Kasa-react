@@ -1,16 +1,16 @@
 .collapse {
-margin-bottom: 30px;
+margin-bottom: 0px;
 }
 
 .collapse-header {
 background-color: #FF6060;
-border-radius: 5px;
-padding: 10px 20px 10px 15px;
+border-radius: 13px;
+padding: 16px 20px 16px 15px;
 cursor: pointer;
 display: flex;
 justify-content: space-between;
 align-items: center;
-margin-top: 35px;
+margin-top: 40px;
 }
 
 .collapse-header h3 {
@@ -40,16 +40,34 @@ margin: 0;
     padding: 20px 15px;
     border-radius: 0 0 5px 5px;
     font-weight: 400;
+    font-size: 18px;
+}
+
+.collapse-content span {
+    display: block;
 }
 
 @media (max-width: 768px)  {
     .collapse-header {
         margin-top: 19px;
         padding: 5px 10px;
+        border-radius: 5px;
     }
 
     .collapse-arrow img {
         width: 20px;
         height: 20px;
     }
+
+    .collapse-header h3 {
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .collapse-content {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    
 }
