@@ -7,20 +7,27 @@ import Collapse from "../components/Collapse/Collapse";
 
 function PropertyDetail() {
 const { id } = useParams();
-const [logement, setLogement] = useState(null);
+const [logement, setLogement] = useState(undefined);
 const [loading, setLoading] = useState(true);
 
 useEffect(() => {
 fetch(`http://localhost:8080/api/properties/${id}`)
-.then((response) => response.json())
-.then((data) => {
-setLogement(data);
-setLoading(false);
+.then((response) => {
+  if (!response.ok)  throw new Error('NotFound');
+  return response.json();
+})
+.then((data) =>  {
+  setLogement(data);
+  setLoading(false);
+})
+.catch(() => {
+  setLogement(null);
+  setLoading(false);
 });
-}, [id]);
+}, [id]); 
 
-if (loading) return <p>Chargement...</p>;
-if (!logement) return <NotFound />;
+if (logement === undefined) return <p>Chargement...</p>;
+if (logement === null) return <NotFound />;
 
   return (
     <article className="property">
