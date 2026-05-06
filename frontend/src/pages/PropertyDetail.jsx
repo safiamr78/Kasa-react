@@ -6,28 +6,28 @@ import Slideshow from "../components/Slideshow/Slideshow";
 import Collapse from "../components/Collapse/Collapse";
 
 function PropertyDetail() {
-const { id } = useParams();
-const [logement, setLogement] = useState(undefined);
-const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const [logement, setLogement] = useState(undefined);
+  const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-fetch(`http://localhost:8080/api/properties/${id}`)
-.then((response) => {
-  if (!response.ok)  throw new Error('NotFound');
-  return response.json();
-})
-.then((data) =>  {
-  setLogement(data);
-  setLoading(false);
-})
-.catch(() => {
-  setLogement(null);
-  setLoading(false);
-});
-}, [id]); 
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/properties/${id}`)
+      .then((response) => {
+        if (!response.ok) throw new Error('NotFound');
+        return response.json();
+      })
+      .then((data) => {
+        setLogement(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLogement(null);
+        setLoading(false);
+      });
+  }, [id]);
 
-if (logement === undefined) return <p>Chargement...</p>;
-if (logement === null) return <NotFound />;
+  if (logement === undefined) return <p>Chargement...</p>;
+  if (logement === null) return <NotFound />;
 
   return (
     <article className="property">
@@ -51,25 +51,25 @@ if (logement === null) return <NotFound />;
             <span className="property__host-name">{logement.host.name}</span>
             <div className="property__host-avatar" aria-label="Avatar hôte" />
           </div>
-          
-            <div className="property__rating" aria-label={`Note : ${logement.rating} sur 5`}>
-{[1, 2, 3, 4, 5].map((star) => (
-<img
-key={star}
-src={star <= Number(logement.rating) ? "/src/assets/étoile.svg" : "/src/assets/étoile-vide.svg"}
-alt=""
-width="32"
-height="32"
-/>
-))}
-</div>
+
+          <div className="property__rating" aria-label={`Note : ${logement.rating} sur 5`}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <img
+                key={star}
+                src={star <= Number(logement.rating) ? "/src/assets/étoile.svg" : "/src/assets/étoile-vide.svg"}
+                alt=""
+                width="32"
+                height="32"
+              />
+            ))}
+          </div>
         </div>
       </div>
 
       <div className="property__collapses">
-<Collapse title="Description" content={logement.description} />
-<Collapse title="Équipements" content={Array.isArray(logement.equipments) ? logement.equipments.map((item, i) => <span key={i}>{item}</span>) : logement.equipments} />
-    </div>
+        <Collapse title="Description" content={logement.description} />
+        <Collapse title="Équipements" content={Array.isArray(logement.equipments) ? logement.equipments.map((item, i) => <span key={i}>{item}</span>) : logement.equipments} />
+      </div>
     </article>
   );
 }

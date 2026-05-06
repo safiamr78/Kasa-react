@@ -1,3 +1,10 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+
+@media (max-width: 768px) {
+    .about-collapse {
+        padding: 0;
+    }
+
+}

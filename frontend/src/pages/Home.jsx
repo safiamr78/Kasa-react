@@ -6,26 +6,26 @@ import "./Home.css";
 import bannerHome from '../assets/source1.jpg';
 
 function Home() {
-const [logements, setLogements] = useState([]);
+    const [logements, setLogements] = useState([]);
 
-useEffect(() => {
-fetch("http://localhost:8080/api/properties")
-.then((response) => response.json())
-.then((data) => setLogements(data));
-}, []);
+    useEffect(() => {
+        fetch("http://localhost:8080/api/properties")
+            .then((response) => response.json())
+            .then((data) => setLogements(data));
+    }, []);
 
-return (
-<section className="home">
-<Banner text={<>Chez vous, <br className="mobile-break"/> partout et ailleurs</>} image={bannerHome} opacity={0.6} />
-<div className="home__grid">
-{logements.map((logement) => (
-<Link key={logement.id} to={`/logement/${logement.id}`}>
-<Card title={logement.title} cover={logement.cover} />
-</Link>
-))}
-</div>
-</section>
-);
+    return (
+        <section className="home">
+            <Banner text={<>Chez vous, <br className="mobile-break" /> partout et ailleurs</>} image={bannerHome} opacity={0.6} />
+            <div className="home__grid">
+                {logements.map((logement) => (
+                    <Link key={logement.id} to={`/logement/${logement.id}`}>
+                        <Card title={logement.title} cover={logement.cover} />
+                    </Link>
+                ))}
+            </div>
+        </section>
+    );
 }
 
 export default Home;

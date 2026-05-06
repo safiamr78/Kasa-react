@@ -1,73 +1,105 @@
 .collapse {
-margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
-.collapse-header {
-background-color: #FF6060;
-border-radius: 13px;
-padding: 16px 20px 16px 15px;
-cursor: pointer;
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: 40px;
+.collapse__header {
+    background-color: #FF6060;
+    border-radius: 13px;
+    padding: 16px 20px 16px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
 }
 
-.collapse-header h3 {
-color: white;
-font-size: 18px;
-margin: 0;
+.collapse__header h3 {
+    color: white;
+    font-size: 18px;
+    margin: 0;
 }
 
-.collapse-arrow img {
+.collapse__arrow img {
     width: 32px;
     height: 32px;
     filter: brightness(0) invert(1);
     transition: transform 0.3s;
 }
 
-.collapse-arrow.open img {
-    transform: rotate(180deg);
+.collapse__arrow.open img {
+    transform: rotate(-180deg);
 }
 
-.collapse-arrow {
+.collapse__arrow {
     display: flex;
     align-items: center;
 }
 
-.collapse-content {
+.collapse__content {
+    overflow: hidden;
+    max-height: 0;
+    animation: none;
     background-color: #f9f9f9;
-    padding: 20px 15px;
-    border-radius: 0 0 5px 5px;
-    font-weight: 400;
     font-size: 18px;
 }
 
-.collapse-content span {
+.collapse__content-inner {
+    padding: 20px 15px;
+}
+
+.collapse__content.open {
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+.collapse__content.closed {
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 500px;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        max-height: 500px;
+    }
+
+    to {
+        max-height: 0;
+    }
+}
+
+.collapse__content span {
     display: block;
 }
 
-@media (max-width: 768px)  {
-    .collapse-header {
+@media (max-width: 768px) {
+    .collapse__header {
         margin-top: 19px;
         padding: 5px 10px;
         border-radius: 5px;
     }
 
-    .collapse-arrow img {
+    .collapse__arrow img {
         width: 20px;
         height: 20px;
     }
 
-    .collapse-header h3 {
+    .collapse__header h3 {
         font-size: 13px;
         font-weight: 700;
     }
 
-    .collapse-content {
+    .collapse__content {
         font-size: 12px;
         font-weight: 400;
     }
 
-    
+
 }

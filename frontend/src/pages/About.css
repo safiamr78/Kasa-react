@@ -1,5 +1,10 @@
 .about-collapse {
     max-width: 1024px;
     margin: 0 auto;
-    padding: 0 20px;
+
+}
+
+.about-collapse .collapse-header {
+    border-radius: 5px;
+    padding: 10px 15px;
 }
